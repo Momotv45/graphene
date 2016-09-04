@@ -49,7 +49,8 @@ def convert_django_field(field):
         "Don't know how to convert the Django field %s (%s)" %
         (field, field.__class__))
 
-
+from phonenumber_field.modelfields import PhoneNumberField
+@convert_django_field.register(PhoneNumberField)
 @convert_django_field.register(models.CharField)
 @convert_django_field.register(models.TextField)
 @convert_django_field.register(models.EmailField)
